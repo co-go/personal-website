@@ -1,6 +1,7 @@
 {
     "version": 2,
     "name": "jcorley",
+    "alias": "jcorley",
     "builds": [
         { "src": "package.json", "use": "@now/static-build" }
     ],
