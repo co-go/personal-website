@@ -41,6 +41,7 @@ span.small {
     margin: 0;
     text-transform: uppercase;
     letter-spacing: 0.2em;
+    text-shadow: 1vmin 1vmin 0 var(--color6), -1vmin -1vmin 0 var(--color3);
 }
 
 .greeting .hey {
@@ -128,6 +129,7 @@ span.small {
 .nav .pull-right {
     flex: 2;
     text-align: right;
+    align-self: center;
 }
 
 .nav .project:not(:last-child):after {
@@ -144,7 +146,55 @@ span.small {
 }
 
 .nav .project.active h5 {
+    font-weight: bolder;
     border-bottom: 2px solid #000;
 }
 
 /* PROJECT CONTENT STYLING */
+.projectName {
+    font-family: 'Permanent Marker', cursive;
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 0;
+}
+
+.projectSubtitle {
+    color: #aaa;
+    text-align: center;
+    margin: 0;
+}
+
+.projectTimeline {
+    color: #666;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin: 5px 0 15px;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.skills span {
+    padding: 3px 7px;
+    color: #fff;
+    background-color: #000;
+    border-radius: 5px;
+    margin: 5px 5px;
+    font-weight: bold;
+}
+
+.projectSummary h3 {
+    margin-bottom: 5px;
+}
+
+.projectSummary h4 {
+    margin-bottom: 5px;
+}
+
+.projectSummary p {
+    margin-top: 0;
+}
