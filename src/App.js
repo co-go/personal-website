@@ -30,6 +30,7 @@ class App extends Component {
                         <polygon className="sep-color-2" points="990,32 990,36 1192,130 1210,116 "></polygon>
                         <polygon className="sep-color-2" points="1380,64 1536,150 1526,168 1380,68 "></polygon>
                     </svg>
+
                     <div className="bottom">
                         <h2 className="title">About Me</h2>
                         <p> I am a Junior currently studying Computer Science as an undergraduate at the <b>University of Maryland, College Park</b>. I like messing with web design, making functional tools that look <i>sweet</i>. Destiny 2 is my current timesuck, when I'm not at school or doing work, I'm getting in some raids. Feel free to reach out if you have any questions -- I love making useful things that help humans. </p>
@@ -43,6 +44,31 @@ class App extends Component {
                     </div>
                 </div>
                 <div className="content">
+                    <div className="nav">
+                        <h3>My Work</h3>
+                        <div className="pull-right">
+                            <span className="project active">
+                                <h5>raids.top</h5>
+                            </span>
+                            <span className="project">
+                                <h5>goUMD</h5>
+                            </span>
+                            <span className="project">
+                                <h5>Aegis Timeportal</h5>
+                            </span>
+                            <span className="project">
+                                <h5>warframe.market</h5>
+                            </span>
+                            <span className="project">
+                                <h5>Lions Time</h5>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div className="projectSummary">
+                        <h1 className="projectName">raids.top</h1>
+
+                    </div>
                     <h1> Summaries and pictures of my projects and contributions are soon to come. </h1>
                     <h3> For now, enjoy this nice ordered list <span className="small">(ooooh!)</span> </h3>
                     <ol>

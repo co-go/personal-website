@@ -1,17 +1,13 @@
 :root {
-    --color1: rgba(7, 16, 19, 1);
-    --color2: rgba(235, 81, 96, 1);
-    --color3: rgba(183, 153, 156, 1);
-    --color4: rgba(170, 170, 170, 1);
-    --color5: rgba(223, 224, 226, 1);
+    --color1: rgb(7, 16, 19);
+    --color2: rgb(235, 81, 96);
+    --color3: rgb(183, 153, 156);
+    --color4: rgb(170, 170, 170);
+    --color5: rgb(223, 224, 226);
+    --color6: rgb(109, 122, 137);
 }
 
-span.small {
-    font-weight: 600;
-    font-size: 60%;
-    font-style: italic;
-}
-
+/* PAGE STYLING */
 .greeting {
     color: white;
     width: 40vw;
@@ -21,6 +17,17 @@ span.small {
     box-shadow: 0 0 5px 0px black;
 }
 
+.content {
+    padding: 20px 20px 20px calc(40vw + 25px);
+}
+
+span.small {
+    font-weight: 600;
+    font-size: 60%;
+    font-style: italic;
+}
+
+/* LEFT BAR (GREETING) STYLING */
 .greeting .top {
     text-align: center;
     position: relative;
@@ -104,6 +111,40 @@ span.small {
     margin: 0 10px;
 }
 
-.content {
-    padding: 20px 20px 20px calc(40vw + 50px);
+
+/* NAVBAR STYLING */
+.nav {
+    display: flex;
+    border: 0.5px solid #ddd;
+    padding: 20px;
 }
+
+.nav h3 {
+    flex: 1;
+    margin: 0;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.nav .pull-right {
+    flex: 2;
+    text-align: right;
+}
+
+.nav .project:not(:last-child):after {
+    content: "";
+    border: 0.5px solid #eee;
+    margin: 0 10px;
+}
+
+.nav .project h5 {
+    cursor: pointer;
+    display: inline;
+    padding: 10px 0;
+    font-weight: lighter;
+}
+
+.nav .project.active h5 {
+    border-bottom: 2px solid #000;
+}
+
+/* PROJECT CONTENT STYLING */
