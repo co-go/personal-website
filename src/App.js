@@ -33,7 +33,7 @@ class App extends Component {
 
                     <div className="bottom">
                         <h2 className="title">About Me</h2>
-                        <p> I am a Junior currently studying Computer Science as an undergraduate at the <b>University of Maryland, College Park</b>. I like messing with web design, making functional tools that look <i>sweet</i>. Destiny 2 is my current timesuck, when I'm not at school or doing work, I'm getting in some raids. Feel free to reach out if you have any questions -- I love making useful things that help humans. </p>
+                        <p> I am a Junior currently studying Computer Science as an undergraduate at the <b>University of Maryland, College Park</b>. I have always been interested in data management, where I can gather information from APIs or from users, process it in some way, and represent it in a form that looks good and is practical to the target audience. This led me to learn web design and many of the different frameworks and languages around it that could help me convey my message more effectively. Feel free to reach out if you have any questions!</p>
                     </div>
                     <div className="social-flex">
                         <div className="divider" />
