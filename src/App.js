@@ -5,8 +5,32 @@ import "./App.css";
 
 // import "~slick-carousel/slick/slick.css";
 // import "~slick-carousel/slick/slick-theme.css";
-
+//
 class App extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            project: "raids.top"
+        }
+
+        this.RenderProject = this.RenderProject.bind(this);
+    }
+
+    RenderProject = (props) => {
+        let classes = "project";
+
+        console.log(this.state.project);
+
+        if (this.state.project === props.name) classes += " active";
+
+        return (
+            <span className={classes} project={props.name}>
+                <h5 onClick={() => this.setState({project: props.name})}>{props.name}</h5>
+            </span>
+        );
+    }
+
     render() {
         return (
             <div className="App">
@@ -47,60 +71,81 @@ class App extends Component {
                     <div className="nav">
                         <h3>My Work</h3>
                         <div className="pull-right">
-                            <span className="project active">
-                                <h5>raids.top</h5>
-                            </span>
-                            <span className="project">
-                                <h5>goUMD</h5>
-                            </span>
-                            <span className="project">
-                                <h5>Aegis Timeportal</h5>
-                            </span>
+                            <this.RenderProject name="raids.top" />
+                            <this.RenderProject name="goUMD" />
+                            <this.RenderProject name="Aegis Timeportal" />
                         </div>
                     </div>
 
-                    <div className="projectSummary">
-                        <h1 className="projectName">raids.top</h1>
-                        <h2 className="projectSubtitle">Player statistics and leaderboards for Destiny 2.</h2>
-                        <h4 className="projectTimeline">September 2018 - Present</h4>
-                        <div className="skills">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>Javascript</span>
-                            <span>React</span>
-                            <span>Public API</span>
-                            <span>AWS DynamoDB</span>
-                            <span>AWS Lambda</span>
-                            <span>Redis</span>
-                        </div>
-
-                        <br />
-
-                        <h3>Background</h3>
-                        <p>This project was inspired by many of my friends who play with me on Destiny 2. When we finish activities, there is no way in-game to see how well you did after you complete the activity. If you want to see any historical data, the Destiny 2 API is the only way.</p>
-
-                        <h3>The Process</h3>
-                        <p>After tinkering around with the API and understanding what endpoints I was going to use, I began with an algorithm that would take a username and return all of their consolidated information as quickly as I could. Creating a robust and efficient algorithm took a couple weeks and had many bugs and edge cases that were quite challenging. The next step was to make this algorithm accessible by the internet, as well as storing the output of this algorithm so it wouldn't be fetching user information that we had already processed.</p>
-
-                        <p>I began researching where I wanted to host my tool. I could buy a VPS and host everything off a simple linux machine, but I knew that if I set it up correctly, my costs would be significantly lower on a cloud platform. In addition, my algorithm would run faster as the connection on a cloud provider is infinitely better than most other connection. as its making hundreds of API requests when initializing a user.</p>
-
-                        <p>Researching all of the different cloud platforms and their pros/cons was a very tedious process. Understanding that every platform has its own free tier, what you get charged for outside of this tier, which platforms offer the cheapest storage with frequent read/writes but relatively small amount data. Eventually I decided on AWS. DynamoDB offers basically unlimited read and writes as long as it doesn't surpass 5 kB/s. My data is tiny, (~4kB/user), so this isn't even a problem if I'm overwriting an entire user every second. AWS Lambda's are also pretty sweet, 1mil free requests through API Gateway, and the bandwidth costs were resonable when compared to Google Cloud and Azure Functions.</p>
-
-                        <p>After setting up AWS to work with my algorithm and made it accessible via the API Gateway, I moved on to designing the website. This is where I am currently am in this project. Taking the user data I have and displaying it in a format that makes sense / looks good to the user.</p>
-
-                        <i> ... last updated 12/2018 ...</i>
-
-                        <h3>Technical Challenges</h3>
-                        <h4>Initializing a User</h4>
-                        <p>The process of creating a user needed to be a quick one, so I wouldn't lose users because they were waiting on an algorithm to finish for 2-3 minutes. Hosting on a cloud platform helps significantly with this as I'm able to do the users with the most amount of data (1500+ requests) in about 40 seconds. The average user (~200 requests) takes around 15 seconds. I have spent a large amount of time minimizing the total amount of requests and performing as many requests as I can simultaneously. The efficiency of my algorithm is largely reliant on how quickly I can get all of the users data through these requests, as the actual process of parsing the JSON and consolidating it takes a matter of microseconds (versus 1-5 seconds for a request).</p>
-
-                        <h4>Updating a User</h4>
-                        <p>When a user's data has already been initialized, I shouldn't have to parse activities that I already have. This raises a problem of how I would keep track of the latest activity that I tracked. I noticed that the API actually returns game history chronologically, so I could actually just keep the gameHash of the most recent activity and loop through activities until I reached this gameHash in order to update it.</p>
-                    </div>
+                    {this.state.project === "raids.top" && <RaidsTop />}
+                    {this.state.project === "goUMD" && <GoUMD />}
                 </div>
             </div>
         );
     }
 }
+
+const RaidsTop = () => (
+    <div className="projectSummary">
+        <h1 className="projectName">raids.top</h1>
+        <h2 className="projectSubtitle">Player statistics and leaderboards for Destiny 2.</h2>
+        <h4 className="projectTimeline">September 2018 - Present</h4>
+        <div className="skills">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>Javascript</span>
+            <span>React</span>
+            <span>Public API</span>
+            <span>AWS DynamoDB</span>
+            <span>AWS Lambda</span>
+            <span>Redis</span>
+        </div>
+
+        <br />
+
+        <h3>Background</h3>
+        <p>This project was inspired by many of my friends who play with me on Destiny 2. When we finish activities, there is no way in-game to see how well you did after you complete the activity. If you want to see any historical data, the Destiny 2 API is the only way.</p>
+
+        <h3>The Process</h3>
+        <p>After tinkering around with the API and understanding what endpoints I was going to use, I began with an algorithm that would take a username and return all of their consolidated information as quickly as I could. Creating a robust and efficient algorithm took a couple weeks and had many bugs and edge cases that were quite challenging. The next step was to make this algorithm accessible by the internet, as well as storing the output of this algorithm so it wouldn't be fetching user information that we had already processed.</p>
+
+        <p>I began researching where I wanted to host my tool. I could buy a VPS and host everything off a simple linux machine, but I knew that if I set it up correctly, my costs would be significantly lower on a cloud platform. In addition, my algorithm would run faster as the connection on a cloud provider is infinitely better than most other connection. as its making hundreds of API requests when initializing a user.</p>
+
+        <p>Researching all of the different cloud platforms and their pros/cons was a very tedious process. Understanding that every platform has its own free tier, what you get charged for outside of this tier, which platforms offer the cheapest storage with frequent read/writes but relatively small amount data. Eventually I decided on AWS. DynamoDB offers basically unlimited read and writes as long as it doesn't surpass 5 kB/s. My data is tiny, (~4kB/user), so this isn't even a problem if I'm overwriting an entire user every second. AWS Lambda's are also pretty sweet, 1mil free requests through API Gateway, and the bandwidth costs were resonable when compared to Google Cloud and Azure Functions.</p>
+
+        <p>After setting up AWS to work with my algorithm and made it accessible via the API Gateway, I moved on to designing the website. This is where I am currently am in this project. Taking the user data I have and displaying it in a format that makes sense / looks good to the user.</p>
+
+        <i> ... last updated 12/2018 ...</i>
+
+        <h3>Technical Challenges</h3>
+        <h4>Initializing a User</h4>
+        <p>The process of creating a user needed to be a quick one, so I wouldn't lose users because they were waiting on an algorithm to finish for 2-3 minutes. Hosting on a cloud platform helps significantly with this as I'm able to do the users with the most amount of data (1500+ requests) in about 40 seconds. The average user (~200 requests) takes around 15 seconds. I have spent a large amount of time minimizing the total amount of requests and performing as many requests as I can simultaneously. The efficiency of my algorithm is largely reliant on how quickly I can get all of the users data through these requests, as the actual process of parsing the JSON and consolidating it takes a matter of microseconds (versus 1-5 seconds for a request).</p>
+
+        <h4>Updating a User</h4>
+        <p>When a user's data has already been initialized, I shouldn't have to parse activities that I already have. This raises a problem of how I would keep track of the latest activity that I tracked. I noticed that the API actually returns game history chronologically, so I could actually just keep the gameHash of the most recent activity and loop through activities until I reached this gameHash in order to update it.</p>
+    </div>
+);
+
+const GoUMD = () => (
+    <div className="projectSummary">
+        <h1 className="projectName">goUMD</h1>
+        <h2 className="projectSubtitle">Bus routing App for the University of Maryland.</h2>
+        <h4 className="projectTimeline">April 2018 - Present</h4>
+        <div className="skills">
+            <span>Swift</span>
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>Javascript</span>
+            <span>React Native</span>
+            <span>Public API</span>
+            <span>Google Cloud Functions</span>
+        </div>
+
+        <br />
+
+        <h3>Background</h3>
+        <p>This project started as an idea from one of my friends, Ethan Winters. He had the idea to remake the current bus routing app for the University of Maryland with many of the requested features from students. The purpose of this app would be to allow all students commuting and traveling around campus to know what bus they should take to get to their destination.</p>
+    </div>
+);
 
 export default App;
