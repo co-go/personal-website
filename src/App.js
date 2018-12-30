@@ -145,6 +145,17 @@ const GoUMD = () => (
 
         <h3>Background</h3>
         <p>This project started as an idea from one of my friends, Ethan Winters. He had the idea to remake the current bus routing app for the University of Maryland with many of the requested features from students. The purpose of this app would be to allow all students commuting and traveling around campus to know what bus they should take to get to their destination.</p>
+
+        <h3>The Process</h3>
+        <p>We began with an algorithm, taking in the current location and a destination and returns the pickup and dropoff stops. After testing this algorithm, we began work on our views. For our first version, we created a simple view, just displaying all the destinations and when a user would select one, we would use the algorithm to find and display the fastest route. This first version was enough for our friends to start using. We used their feedback to continue modifying the views and information to the users. </p>
+
+        <p>Once we felt like we had fixed many of the bugs and had a product that would be useful to students, we published it to the App Store and advertised it on Reddit. It blew up, reaching over 1000 downloads in the first 24 hours and reaching 4000 by the end of the first week. The amount of support we got for the project was amazing, pushing us to continue adding features that were requested by fellow students.</p>
+
+        <p>We added a view that projects the routes onto a map and live updates the location of the bus, as well as a way to route to destinations that aren't pre-defined. We also modified views to make the routing flow more easily. Throughout our work on these new features, there was still one hugely requested item that we planned to do in a couple months. This feature was Android support, as we only had released goUMD for the iOS.</p>
+
+        <p>As of now, we are working on porting our iOS to Android by using React Native, where we are planning to release it with a handful of new features to both platforms again in a large update in late January 2019.</p>
+
+        <i> ... last updated 12/2018 ...</i>
     </div>
 );
 
