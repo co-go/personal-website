@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { SocialIcon } from "react-social-icons";
+import Slider from "react-slick";
 import "./App.css";
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-// import "~slick-carousel/slick/slick.css";
-// import "~slick-carousel/slick/slick-theme.css";
-//
 class App extends Component {
     constructor(props) {
         super(props);
@@ -19,8 +19,6 @@ class App extends Component {
 
     RenderProject = (props) => {
         let classes = "project";
-
-        console.log(this.state.project);
 
         if (this.state.project === props.name) classes += " active";
 
@@ -79,6 +77,7 @@ class App extends Component {
 
                     {this.state.project === "raids.top" && <RaidsTop />}
                     {this.state.project === "goUMD" && <GoUMD />}
+                    {this.state.project === "Aegis Timeportal" && <Aegis />}
                 </div>
             </div>
         );
@@ -156,6 +155,33 @@ const GoUMD = () => (
         <p>As of now, we are working on porting our iOS to Android by using React Native, where we are planning to release it with a handful of new features to both platforms again in a large update in late January 2019.</p>
 
         <i> ... last updated 12/2018 ...</i>
+    </div>
+);
+
+const Aegis = () => (
+    <div className="projectSummary">
+        <h1 className="projectName">Aegis Timeportal</h1>
+        <h2 className="projectSubtitle">Timesheet system for Aegis Inc.</h2>
+        <h4 className="projectTimeline">November 2016 - February 2017</h4>
+        <div className="skills">
+            <span>Node.js</span>
+            <span>MongoDB</span>
+            <span>Pug (Jade)</span>
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>Javascript</span>
+        </div>
+
+        <br />
+
+        <Slider dots infinite>
+            <iframe id="ytplayer" type="text/html" width="720" height="405" src="https://www.youtube.com/embed/l7y2y5OycBI" frameborder="0" allowFullScreen title="Handle Timesheets" />
+        </Slider>
+
+        <br />
+
+        <h3>Background</h3>
+        <p>This project is meant to replace an older system that Aegis used, offering more specialized features for accountants and employees. I was given a set of features that had to be in the new system, but the design was up to me. I was able to work with the accountants directly to design the system to their preferences. Throughout a few versions and this feedback, I was able to deliver a full product that all users were very pleased with.</p>
     </div>
 );
 
